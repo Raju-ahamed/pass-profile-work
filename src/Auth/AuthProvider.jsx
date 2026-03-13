@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { AuthContext } from './AuthContext';
 import { auth } from '../component/firebase.inti';
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
 
 const AuthProvider = ({ children }) => {
     const [users, setUsers] = useState(null);
@@ -18,6 +18,10 @@ const AuthProvider = ({ children }) => {
         setLoader(true);
         return signOut(auth);
     }
+    const goggleProvider = new GoogleAuthProvider();
+    const sginUpGoggle =()=>{
+        return signInWithPopup(auth,goggleProvider);
+    }
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, (user) => {
             console.log("user is", user);
@@ -31,6 +35,7 @@ const AuthProvider = ({ children }) => {
     const userInfo = {
         users,
         loader,
+        sginUpGoggle,
         sginUpUser,
         logInUser,
         sginOutUser

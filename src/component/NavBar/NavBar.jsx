@@ -4,22 +4,22 @@ import { AuthContext } from '../../Auth/AuthContext';
 
 const NavBar = () => {
     const { users, sginOutUser } = use(AuthContext);
-    
+
     const links = <>
         <li><NavLink to="/">Home</NavLink></li>
         <li><NavLink to="/login">Login</NavLink></li>
         <li><NavLink to="/signup">Sign Up</NavLink></li>
+
         {
             users && <>
                 <li><NavLink to="/profile">profile</NavLink></li>
-                <li><NavLink to="/deshboard">Deshboard</NavLink></li>
             </>
         }
-
+        <li><NavLink to="/deshboard">Deshboard</NavLink></li>
     </>
-  
-    const handleSginOut = ()=>{
-        sginOutUser().then(()=>{}).catch(()=>{});
+
+    const handleSginOut = () => {
+        sginOutUser().then(() => { }).catch(() => { });
     }
 
     return (
@@ -49,7 +49,7 @@ const NavBar = () => {
             <div className="navbar-end">
                 {
                     users ? <><p>{users.email}</p>
-                        <button onClick={handleSginOut} className='ml-2'><NavLink to="/">Sign out</NavLink></button>
+                        <button onClick={handleSginOut} className='ml-2'><NavLink>Sign out</NavLink></button>
 
                     </> :
                         <button><NavLink to="/login">Sign in</NavLink></button>
