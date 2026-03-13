@@ -8,6 +8,9 @@ import Root from './component/Root/Root.jsx';
 import Login from './component/Login/Login.jsx';
 import SignUp from './component/SignUp/SignUp.jsx';
 import AuthProvider from './Auth/AuthProvider.jsx';
+import Profile from './component/profile/Profile.jsx';
+import DeshBoard from './component/Deshboard/DeshBoard.jsx';
+import PriveatRoute from './Route/PriveatRoute.jsx';
 
 const router = createBrowserRouter([
   {
@@ -16,8 +19,9 @@ const router = createBrowserRouter([
     children: [
       { index: true, Component: Home },
       { path: "login", Component: Login },
-      { path: "signup", Component: SignUp }
-
+      { path: "signup", Component: SignUp },
+      { path: "profile", element:<PriveatRoute><Profile></Profile></PriveatRoute> },
+      { path: "deshboard", element: <PriveatRoute><DeshBoard></DeshBoard></PriveatRoute> }
     ]
   },
 ]);
