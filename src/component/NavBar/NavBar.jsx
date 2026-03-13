@@ -4,6 +4,7 @@ import { AuthContext } from '../../Auth/AuthContext';
 
 const NavBar = () => {
     const { users, sginOutUser } = use(AuthContext);
+    
     const links = <>
         <li><NavLink to="/">Home</NavLink></li>
         <li><NavLink to="/login">Login</NavLink></li>

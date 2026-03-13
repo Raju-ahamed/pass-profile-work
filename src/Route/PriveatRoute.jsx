@@ -4,7 +4,10 @@ import { AuthContext } from '../Auth/AuthContext';
 import { Navigate } from 'react-router';
 
 const PriveatRoute = ({ children }) => {
-    const { users } = use(AuthContext);
+    const { users, loader } = use(AuthContext);
+    if (loader){
+        return <span className="loading loading-bars loading-xl"></span>
+    }
     // const navigate = useNavigate();
     if (!users) {
         return <Navigate to="/login"></Navigate>
